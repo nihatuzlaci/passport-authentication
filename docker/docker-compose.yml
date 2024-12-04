@@ -1,0 +1,22 @@
+version: "3.9"
+name: "social_registration_docker"
+services:
+  mongodb:
+    image: mongo:latest
+    restart: always
+    environment:
+      # - MONGO_INITDB_ROOT_USERNAME=social_registration_user
+      # - MONGO_INITDB_ROOT_PASSWORD=social_registration_password
+      - MONGO_INITDB_DATABASE=social_auth_db
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_data:/data/db
+    container_name: social_registration_mongo
+
+volumes:
+  mongodb_data:
+
+networks:
+  local:
+    driver: bridge
